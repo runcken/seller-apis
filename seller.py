@@ -15,7 +15,7 @@ def get_product_list(last_id, client_id, seller_token):
     """Получить список товаров магазина Озон
 
     Аргументы:
-        last_id (str): Идентификатор последнего згачения из
+        last_id (str): Идентификатор последнего значения из
                     предыдущего запроса.
         client_id (str): Идентификатор клиента.
         seller_token (str): API-ключ продавца.
@@ -179,7 +179,7 @@ def download_stock():
     Пример использования:
         >>> stock_data = download_stock()
         >>> print(stock_data[0])
-        {"Наименование": "Casio-149", "Остаток": 5}
+        {"Код": "Casio-149", "Остаток": 5}
 
     Исключения:
         requests.exceptions.HTTPError
@@ -215,7 +215,7 @@ def create_stocks(watch_remnants, offer_ids):
         list: спиоск словарей с артикулами и количеством товара.
 
     Пример использования:
-        >>> watch_remnants = {"Наименование": "Casio-149", "Остаток": 5}
+        >>> watch_remnants = {"Код": "Casio-149", "Остаток": 5}
         >>> offer_ids ={"Артикул": "12345"}
         >>> watch_stocks = create_stocks(watch_remnants, offer_ids)
         >>>print(watch_stocks)
@@ -255,7 +255,7 @@ def create_prices(watch_remnants, offer_ids):
         list: список цен на артикулы.
 
     Пример использования:
-        >>> watch_remnants = {"Наименование": "Casio-149", "Цена": "5'990.00 руб"}
+        >>> watch_remnants = {"Код": "Casio-149", "Цена": "5'990.00 руб"}
         >>> offer_ids ={"Артикул": "12345"}
         >>> watch_prices = create_prices(watch_remnants, offer_ids)
         >>>print(watch_prices)
@@ -333,7 +333,7 @@ async def upload_prices(watch_remnants, client_id, seller_token):
         list: Список обновленных цен
 
     Пример использования:
-        >>> remnants = [{"Наименование"}: "Casio-149", "Цена": 5'990.00 руб"}]
+        >>> remnants = [{"Код"}: "Casio-149", "Цена": 5'990.00 руб"}]
         >>> prices = asyncio.run(
         ...     upload_prices(
         ...         remnants, "your_client_id", "your_seller_token"
@@ -365,7 +365,7 @@ async def upload_stocks(watch_remnants, client_id, seller_token):
         tuple: кортеж с непустыми остатками и всеми остатками
 
     Пример использования:
-        >>> remnants = [{"Наименование"}: "Casio-149", "Остатки": "5"}]
+        >>> remnants = [{"Код"}: "Casio-149", "Остатки": "5"}]
         >>> not empty, all_stocks = asyncio.run(
         ...     upload_stocks(
         ...         remnants, "your_client_id", "your_seller_token"
