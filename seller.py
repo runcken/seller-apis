@@ -322,7 +322,7 @@ def divide(lst: list, n: int):
 
 
 async def upload_prices(watch_remnants, client_id, seller_token):
-    """Асинхронно обновить цены товаров
+    """Асинхронно обновить цены товаров на маркетплейсе Озон
 
     Аргументы:
         watch_remnants (list): Список остатков товаров
@@ -354,7 +354,7 @@ async def upload_prices(watch_remnants, client_id, seller_token):
 
 
 async def upload_stocks(watch_remnants, client_id, seller_token):
-    """Асинхронно обновить остатки товаров
+    """Асинхронно обновить остатки товаров на маркетплейсе Озон
 
     Аргументы:
         watch_remnants (list): Список остатков товаров
