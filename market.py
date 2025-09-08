@@ -1,3 +1,4 @@
+"""Something about Yandex market?"""
 import datetime
 import logging.config
 from environs import Env
@@ -99,7 +100,9 @@ def update_price(prices, campaign_id, access_token):
         dict: Ответ API после обновления цен.
 
     Пример использования:
-        >>> prices = [{"id": "123", "price": {"value": 5990, "currencyId": "RUR"}}]
+        >>> prices = [
+                {"id": "123", "price": {"value": 5990, "currencyId": "RUR"}}
+            ]
         >>> update_prices(prices, "your_campaign_id", "your_access_token")
         {"status": "OK"}
 
@@ -107,7 +110,7 @@ def update_price(prices, campaign_id, access_token):
         requests.exceptions.HTTPError: ответ от API с ошибкой.
         requests.exceptions.ConnectionError: ошибка соединения.
         KeyError: если в данных нет ключей.
-        Exception: при остальных ошибках. 
+        Exception: при остальных ошибках.
 
     """
     endpoint_url = "https://api.partner.market.yandex.ru/"
@@ -184,7 +187,9 @@ def create_stocks(watch_remnants, offer_ids, warehouse_id):
     """
     # Уберем то, что не загружено в market
     stocks = list()
-    date = str(datetime.datetime.utcnow().replace(microsecond=0).isoformat() + "Z")
+    date = str(
+        datetime.datetime.utcnow().replace(microsecond=0).isoformat() + "Z"
+        )
     for watch in watch_remnants:
         if str(watch.get("Код")) in offer_ids:
             count = str(watch.get("Количество"))
@@ -301,7 +306,12 @@ async def upload_prices(watch_remnants, campaign_id, market_token):
     return prices
 
 
-async def upload_stocks(watch_remnants, campaign_id, market_token, warehouse_id):
+async def upload_stocks(
+                    watch_remnants,
+                    campaign_id,
+                    market_token,
+                    warehouse_id
+        ):
     """Асинхронно обновить остатки товаров в кампании.
 
     Аргументы:
@@ -344,6 +354,7 @@ async def upload_stocks(watch_remnants, campaign_id, market_token, warehouse_id)
 
 
 def main():
+    """Docstring?"""
     env = Env()
     market_token = env.str("MARKET_TOKEN")
     campaign_fbs_id = env.str("FBS_ID")
